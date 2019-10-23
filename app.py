@@ -11,7 +11,7 @@ def crearIndicador():
 
 @app.route("/listarIndicadores", methods=['GET'])
 def listarIndicadores():
-    indicadores_lista = requests.get('https://webclient-evergreen-656.azurewebsites.net/indicadores').json()
+    indicadores_lista = requests.get('https://api-evergreen-656.azurewebsites.net/indicadores').json()
     return render_template('listaIndicadores.html', listaIndicadores = indicadores_lista)
 
 @app.route("/guardarIndicador", methods=['POST'])
@@ -19,5 +19,5 @@ def guardarIndicador():
     indicador = dict(request.values)
     indicador['prioridad'] = int(indicador['prioridad'])
     indicador['codigo'] = int(indicador['codigo'])
-    requests.post('https://webclient-evergreen-656.azurewebsites.net/indicadores', json=indicador)
+    requests.post('https://api-evergreen-656.azurewebsites.net/indicadores', json=indicador)
     return crearIndicador()
