@@ -21,5 +21,3 @@ def guardarIndicador():
     indicador['codigo'] = int(indicador['codigo'])
     requests.post('http://localhost:5000/indicadores', json=indicador)
     return crearIndicador()
-
-app.run(port=8000, debug=True)
